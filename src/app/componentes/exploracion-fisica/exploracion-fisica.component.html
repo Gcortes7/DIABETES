@@ -1,0 +1,177 @@
+<ion-content class="ion-padding">
+  <form [formGroup]="exploracionForm">
+
+    <!-- 1. SIGNOS VITALES Y SOMATOMETRÍA -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Signos Vitales y Somatometría</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" size-md="3">
+              <ion-item>
+                <ion-label position="stacked">Peso (kg)</ion-label>
+                <ion-input type="number" formControlName="peso" placeholder="84.5"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6" size-md="3">
+              <ion-item>
+                <ion-label position="stacked">Talla (m)</ion-label>
+                <ion-input type="number" formControlName="talla" placeholder="1.57"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6" size-md="3">
+              <ion-item>
+                <ion-label position="stacked">Frec. Cardiaca (FC)</ion-label>
+                <ion-input type="number" formControlName="fc" placeholder="87 min"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6" size-md="3">
+              <ion-item>
+                <ion-label position="stacked">Tensión Arterial (TA)</ion-label>
+                <ion-input type="text" formControlName="ta" placeholder="128/81 mmHg"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6" size-md="3">
+              <ion-item>
+                <ion-label position="stacked">Temperatura (°C)</ion-label>
+                <ion-input type="number" formControlName="temperatura" placeholder="36.3"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6" size-md="3">
+              <ion-item>
+                <ion-label position="stacked">Frec. Respiratoria (FR)</ion-label>
+                <ion-input type="number" formControlName="fr" placeholder="18 min"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- 2. EXPLORACIÓN POR APARATOS Y SISTEMAS -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Exploración por Sistemas</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-accordion-group>
+          <ion-accordion value="nervioso">
+            <ion-item slot="header" color="light">
+              <ion-label>Sistema Nervioso</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <ion-textarea formControlName="sistNervioso" placeholder="Paciente consciente y orientado..." [rows]="3"></ion-textarea>
+            </div>
+          </ion-accordion>
+
+          <ion-accordion value="cardio">
+            <ion-item slot="header" color="light">
+              <ion-label>Sistema Cardio-respiratorio</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <ion-textarea formControlName="sistCardioRespiratorio" placeholder="Tórax normolíneo, simétrico..." [rows]="3"></ion-textarea>
+            </div>
+          </ion-accordion>
+
+          <ion-accordion value="digestivo">
+            <ion-item slot="header" color="light">
+              <ion-label>Sistema Digestivo</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <ion-textarea formControlName="sistDigestivo" placeholder="Abdomen globoso..." [rows]="3"></ion-textarea>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- 3. PRUEBAS ORTOPÉDICAS -->
+    <ion-card formGroupName="pruebas">
+      <ion-card-header>
+        <ion-card-title>Pruebas Ortopédicas Especiales</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row class="header-row">
+            <ion-col size="6"><strong>Prueba</strong></ion-col>
+            <ion-col size="3" class="ion-text-center"><strong>Izq (+ / -)</strong></ion-col>
+            <ion-col size="3" class="ion-text-center"><strong>Der (+ / -)</strong></ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-center border-bottom">
+            <ion-col size="6">Prueba de Spurling</ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-checkbox formControlName="spurlingIzq"></ion-checkbox>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-checkbox formControlName="spurlingDer"></ion-checkbox>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-align-items-center border-bottom">
+            <ion-col size="6">Prueba de Bragard</ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-checkbox formControlName="bragardIzq"></ion-checkbox>
+            </ion-col>
+            <ion-col size="3" class="ion-text-center">
+              <ion-checkbox formControlName="bragardDer"></ion-checkbox>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="12">
+              <ion-item>
+                <ion-label position="stacked">Observaciones / Hallazgos</ion-label>
+                <ion-textarea formControlName="observacionesPruebas" placeholder="Dolor opresivo en zona lumbar..."></ion-textarea>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- 4. REFLEJOS OSTEO-TENDINOSOS -->
+    <ion-card formGroupName="reflejos">
+      <ion-card-header>
+        <ion-card-title>Reflejos Osteotendinosos</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" size-md="6">
+              <ion-item>
+                <ion-label position="stacked">Bíceps C5 (Izquierdo)</ion-label>
+                <ion-select formControlName="bicepsIzq" interface="action-sheet">
+                  <ion-select-option *ngFor="let opt of escalaEscalar" [value]="opt.value">
+                    {{ opt.label }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size="12" size-md="6">
+              <ion-item>
+                <ion-label position="stacked">Bíceps C5 (Derecho)</ion-label>
+                <ion-select formControlName="bicepsDer" interface="action-sheet">
+                  <ion-select-option *ngFor="let opt of escalaEscalar" [value]="opt.value">
+                    {{ opt.label }}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- ACCIÓN -->
+    <div class="ion-padding-top">
+      <ion-button expand="block" color="primary" [disabled]="exploracionForm.invalid" (click)="emitirDatos()">
+        Confirmar Sección de Exploración Física
+      </ion-button>
+    </div>
+
+  </form>
+</ion-content>
